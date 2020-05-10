@@ -16,13 +16,14 @@
         <v-list-item-content>반려동물 : {{ hasDogKr }}</v-list-item-content>
       </v-list-item>
       <v-list-item>
-        <v-list-item-content>수정일자 : {{ editedDate }}</v-list-item-content>
+        <v-list-item-content>수정일자 : {{ getDateAndTime(editedDate) }}</v-list-item-content>
       </v-list-item>
     </v-list>
   </div>
 </template>
 <script>
 import { eventBus } from '../main.js'
+import { dateFormat } from '../mixins/dateFormat'
 
 export default {
   props: ['name', 'address', 'phone', 'hasDog'],
@@ -40,6 +41,19 @@ export default {
     eventBus.$on('userWasEdited', (date) => {
       this.editedDate = date
     })
-  }
+  },
+  methods: {
+    // getDateAndTime (date) {
+    //   if (date !== null) {
+    //     const hour = date.getHours()
+    //     const minutes = date.getMinutes()
+    //     const fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    //     return `${fullDate} ${hour} : ${minutes}`
+    //   } else {
+    //     return null
+    //   }
+    // }
+  },
+  mixins: [dateFormat]
 }
 </script>
