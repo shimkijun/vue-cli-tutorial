@@ -1,22 +1,25 @@
 <template>
   <div class="blue lighten-3 pa-8 ma-5">
     <h1>User 컴포넌트</h1>
-    <p>이름: {{ name }} </p>
-    <v-btn
-        depressed
-        small
-        color="primary"
-        @click="changeName"
-    >
-        이름 변경
-    </v-btn>
+    <p>정보창</p>
     <v-container>
         <v-layout row wrap>
         <v-flex xs12 sm6>
-            <UserDetail :nameOfChild="name"></UserDetail>
+            <UserDetail
+                :name="name"
+                :address="address"
+                :phone="phone"
+                :hasDog="hasDog"
+            />
         </v-flex>
         <v-flex xs12 sm6>
-            <UserEdit></UserEdit>
+            <UserEdit
+                :name="name"
+                :address="address"
+                :phone="phone"
+                :hasDog="hasDog"
+                @child="parents"
+            />
         </v-flex>
         </v-layout>
     </v-container>
@@ -34,12 +37,18 @@ export default {
   },
   data () {
     return {
-      name: 'Vue.js'
+      name: 'Ki Jun',
+      address: 'Suwon',
+      phone: '010-1111-1111',
+      hasDog: true
     }
   },
   methods: {
-    changeName () {
-      this.name = 'skj'
+    parents (user) {
+      this.name = user.name
+      this.address = user.address
+      this.phone = user.phone
+      this.hasDog = user.hasDog
     }
   }
 }

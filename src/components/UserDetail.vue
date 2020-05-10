@@ -1,40 +1,30 @@
 <template>
   <div class="red lighten-3 pa-3">
     <h3>자세한 회원 정보를 확인합니다.</h3>
-    <p>{{ nameOfChild }}</p>
-    <p>{{ sayHello }}</p>
-    <v-btn
-        depressed
-        small
-        color="primary"
-        @click="switchName"
-    >
-        이름 변경
-    </v-btn>
+    <p>상세사항</p>
+    <v-list dense>
+      <v-list-item>
+        <v-list-item-content>이름 : {{ name }}</v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>주소 : {{ address }}</v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>휴대전화 : {{ phone }}</v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>반려동물 : {{ hasDogKr }}</v-list-item-content>
+      </v-list-item>
+    </v-list>
   </div>
 </template>
 <script>
 export default {
-  props: {
-    nameOfChild: {
-      type: String,
-      default: 'hi',
-      required: true
-    }
-  },
-  data () {
-    return {
-      age: 30
-    }
-  },
+  props: ['name', 'address', 'phone', 'hasDog'],
+
   computed: {
-    sayHello () {
-      return this.nameOfChild + ' 내이름은 xxx'
-    }
-  },
-  methods: {
-    switchName () {
-      this.nameOfChild = '컴퓨터 '
+    hasDogKr () {
+      return this.hasDog === true ? '있음' : '없음'
     }
   }
 }
