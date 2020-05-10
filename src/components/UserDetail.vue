@@ -38,6 +38,7 @@ export default {
     }
   },
   created () {
+    console.log('userDetail componenet')
     eventBus.$on('userWasEdited', (date) => {
       this.editedDate = date
     })

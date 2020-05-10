@@ -3,6 +3,7 @@
     <h1>User 컴포넌트</h1>
     <p>정보창</p>
     <p>{{ getDateAndTime(createdAt) }}</p>
+    <p>{{ helloToMixin }}</p>
     <v-container>
         <v-layout row wrap>
         <v-flex xs12 sm6>
@@ -45,7 +46,13 @@ export default {
       createdAt: null
     }
   },
+  computed: {
+    helloToMixin () {
+      return this.mixinData + ' hello'
+    }
+  },
   created () {
+    console.log('user component')
     this.createdAt = new Date()
   },
   methods: {

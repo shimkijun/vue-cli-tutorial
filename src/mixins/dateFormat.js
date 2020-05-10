@@ -1,4 +1,12 @@
 export const dateFormat = {
+  created () {
+    console.log('mixin')
+  },
+  data () {
+    return {
+      mixinData: 'mixin data'
+    }
+  },
   methods: {
     getDateAndTime (date) {
       if (date !== null) {
